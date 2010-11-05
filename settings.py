@@ -9,7 +9,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-import getpass
+import os.path
 
 DATABASES = {
     'default': {
