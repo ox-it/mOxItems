@@ -41,7 +41,6 @@ class Feed(models.Model):
         help_text = "A unique identifier required by the Atom spec (entry - id) and RSS2 (item - guid)",
         verify_exists = False
     )
-
     
     include_in_podcasts = models.BooleanField(
         help_text = "Whether or not this feed should be included in podcasts.ox.ac.uk"
@@ -51,6 +50,10 @@ class Feed(models.Model):
         help_text = "Whether or not this feed should be included in iTunes U"
     )
     
+	# One to many relationships 
+	licence = models.ForeignKey(Licence)
+	template = models.ForeignKey(Template)
+	
     JORUMOPEN_COLLECTIONS = (
         ('', 'None'),
         ('FE', (
@@ -141,8 +144,8 @@ class Feed(models.Model):
 
 class Licence(Models.model):
 	name = models.CharField(
-		help_text = "Name of licence"
-		max_length=128
+		help_text = "Name of licence",
+		max_length= 128
 	)
 	url = models.URLField(
 		help_text = "URL to licence text"
@@ -151,8 +154,8 @@ class Licence(Models.model):
 
 class Template(Models.model):
 	name = models.CharField(
-		help_text = "Name of template"
-		max_legnth = 200
+		help_text = "Name of template",
+		max_length = 200
 	)
 	description = models.TextField(
 		help_text = "Explanation of what this template achieves"
