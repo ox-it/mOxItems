@@ -132,7 +132,34 @@ class Feed(models.Model):
         default = 'published',
         max_length = 10
     )
-    
+
+class Licence(Models.model):
+	name = models.CharField(
+		help_text = "Name of licence"
+		max_length=128
+	)
+	url = models.URLField(
+		help_text = "URL to licence text"
+	)
+	# TODO logo field maybe needed here - link to local image?
+
+class Template(Models.model):
+	name = models.CharField(
+		help_text = "Name of template"
+		max_legnth = 200
+	)
+	description = models.TextField(
+		help_text = "Explanation of what this template achieves"
+	)
+	#TODO Check the two fields
+	template = models.TextField(
+		help_text = "Contents of template (for internal storage)"
+	)
+	url = models.URLField(
+		help_text = "URL to external template - ideally should not be used."
+	)
+	
+
     # TODO
     #
     # Do we need...
