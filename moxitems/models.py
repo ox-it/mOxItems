@@ -151,7 +151,7 @@ class Template(Models.model):
 	description = models.TextField(
 		help_text = "Explanation of what this template achieves"
 	)
-	#TODO Check the two fields
+	#TODO Check the following two fields for accuracy. 
 	template = models.TextField(
 		help_text = "Contents of template (for internal storage)"
 	)
