@@ -183,6 +183,9 @@ class Feed(models.Model):
         default = 'published',
         max_length = 10
     )
+    
+    def __unicode__ (self):
+        return self.title
 
 class Item(models.Model):
     feed = models.ForeignKey(Feed)
@@ -237,6 +240,8 @@ class Item(models.Model):
     
     licence = models.ForeignKey(Licence)
     
+    def __unicode__ (self):
+        return self.title
     # TODO podcast duration maybe needed but ideally derived.
 
     
