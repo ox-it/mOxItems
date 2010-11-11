@@ -32,9 +32,10 @@ class Feed(models.Model):
         help_text = "An e-mail address which people with queries about the feed content can contact"
     )
     
-    language = models.TextField(
+    language = models.CharField(
         help_text = "The <a href='http://www.rssboard.org/rss-language-codes'>ISO 639 language code</a> of the language this feed is published in",
-        default = "en-gb"
+        default = "en-gb",
+        max_length = 8
     )
     
     include_in_podcasts = models.BooleanField(
@@ -97,7 +98,7 @@ class Feed(models.Model):
         )
     )
     
-    jorumopen_collection = models.TextField(
+    jorumopen_collection = models.CharField(
         help_text = 'The name of the JorumOpen collection this feed belongs to',
         choices = JORUMOPEN_COLLECTIONS,
         default = '',
@@ -109,7 +110,7 @@ class Feed(models.Model):
         ('D', 'Descending')
     )
     
-    sort_order = models.TextField(
+    sort_order = models.CharField(
         help_text = "How items in this feed should be ordered",
         choices = SORT_ORDERS,
         default = 'D',
@@ -126,7 +127,7 @@ class Feed(models.Model):
         ('updated', 'Chronologically by updated date')
     )
     
-    sort_by = models.TextField(
+    sort_by = models.CharField(
         help_text = "Which field is used to determine how items are ordered",
         choices = SORT_FIELDS,
         default = 'published',
