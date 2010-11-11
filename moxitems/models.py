@@ -107,7 +107,7 @@ class Feed(models.Model):
         help_text = 'The name of the JorumOpen collection this feed belongs to',
         choices = JORUMOPEN_COLLECTIONS,
         default = '',
-        maxlength = 100
+        max_length = 100
     )
     
     SORT_ORDERS = (
@@ -119,7 +119,7 @@ class Feed(models.Model):
         help_text = "How items in this feed should be ordered",
         choices = SORT_ORDERS,
         default = 'D',
-        maxlength = 1
+        max_length = 1
     )
     
     SORT_FIELDS = (
@@ -136,9 +136,36 @@ class Feed(models.Model):
         help_text = "Which field is used to determine how items are ordered",
         choices = SORT_FIELDS,
         default = 'published',
-        maxlength = 10
+        max_length = 10
     )
-    
+
+class Licence(Models.model):
+	name = models.CharField(
+		help_text = "Name of licence"
+		max_length=128
+	)
+	url = models.URLField(
+		help_text = "URL to licence text"
+	)
+	# TODO logo field maybe needed here - link to local image?
+
+class Template(Models.model):
+	name = models.CharField(
+		help_text = "Name of template"
+		max_legnth = 200
+	)
+	description = models.TextField(
+		help_text = "Explanation of what this template achieves"
+	)
+	#TODO Check the following two fields for accuracy. 
+	template = models.TextField(
+		help_text = "Contents of template (for internal storage)"
+	)
+	url = models.URLField(
+		help_text = "URL to external template - ideally should not be used."
+	)
+	
+
     # TODO
     #
     # Do we need...
