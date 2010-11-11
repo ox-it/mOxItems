@@ -101,7 +101,7 @@ class Feed(models.Model):
         help_text = 'The name of the JorumOpen collection this feed belongs to',
         choices = JORUMOPEN_COLLECTIONS,
         default = '',
-        maxlength = 100
+        max_length = 100
     )
     
     SORT_ORDERS = (
@@ -113,7 +113,7 @@ class Feed(models.Model):
         help_text = "How items in this feed should be ordered",
         choices = SORT_ORDERS,
         default = 'D',
-        maxlength = 1
+        max_length = 1
     )
     
     SORT_FIELDS = (
@@ -130,7 +130,7 @@ class Feed(models.Model):
         help_text = "Which field is used to determine how items are ordered",
         choices = SORT_FIELDS,
         default = 'published',
-        maxlength = 10
+        max_length = 10
     )
     
     # TODO
