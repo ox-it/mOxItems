@@ -36,6 +36,12 @@ class Feed(models.Model):
         help_text = "The <a href='http://www.rssboard.org/rss-language-codes'>ISO 639 language code</a> of the language this feed is published in",
         default = "en-gb"
     )
+
+    guid = models.URLField(
+        help_text = "A unique identifier required by the Atom spec (entry - id) and RSS2 (item - guid)",
+        verify_exists = False
+    )
+
     
     include_in_podcasts = models.BooleanField(
         help_text = "Whether or not this feed should be included in podcasts.ox.ac.uk"
