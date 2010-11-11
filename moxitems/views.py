@@ -1,5 +1,5 @@
 import django.contrib.syndication.views 
-from moxitems.models import Feed, Items
+from moxitems.models import Feed, Item
 
 # Create your views here.
 
