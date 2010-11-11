@@ -1,5 +1,6 @@
 from django.db import models
 
+#TODO figure out which of these are not required by default
 
 class Licence(models.Model):
     """
@@ -13,6 +14,9 @@ class Licence(models.Model):
         help_text = "URL to licence text"
     )
     # TODO logo field maybe needed here - link to local image?
+    
+    def __unicode__ (self):
+        return self.name
 
 class Template(models.Model):
     """
@@ -32,6 +36,9 @@ class Template(models.Model):
     url = models.URLField(
         help_text = "URL to external template - ideally should not be used."
     )
+    
+    def __unicode__ (self):
+        return self.name
 
 class Feed(models.Model):
     """
@@ -58,7 +65,8 @@ class Feed(models.Model):
     
     image = models.ImageField(
         help_text = "An image (or icon) which represents this podcast feed",
-        upload_to = 'podcast_images'
+        upload_to = 'feed_images',
+        blank = True
     )
     
     email = models.EmailField(
@@ -86,7 +94,7 @@ class Feed(models.Model):
     
     # One to many relationships
     licence = models.ForeignKey(Licence)
-    template = models.ForeignKey(Template)
+    template = models.ForeignKey(Template, null=True, blank=True)
     
     JORUMOPEN_COLLECTIONS = (
         ('', 'None'),
@@ -225,10 +233,6 @@ class Item(models.Model):
     
     podcast_recording_date = models.DateTimeField(
         help_text = "The date this podcast was recorded"
-    )
-    
-    podcast_transcripts_available = models.BooleanField(
-        help_text = "Are transcripts available for this podcast?"
     )
     
     licence = models.ForeignKey(Licence)

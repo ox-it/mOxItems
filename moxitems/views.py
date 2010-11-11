@@ -1,5 +1,6 @@
 import django.contrib.syndication.views 
 from moxitems.models import Feed, Item
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 
@@ -21,4 +22,7 @@ class TestFeed(django.contrib.syndication.views.Feed):
         return feed.link
     
     # Items
+    
+    def item_link(self, item):
+        return item.link
     
