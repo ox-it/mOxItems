@@ -1,1 +1,11 @@
 A demo re-write of OxItems
+
+needs 
+
+python:
+
+PIL
+
+and 
+
+libjpeg
